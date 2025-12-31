@@ -40,6 +40,18 @@ GND               →          GND
 - Diagnostyka w Serial Monitor (co 10 pakietów)
 - Obsługa dwóch sieci WiFi (fallback)
 
+### Dlaczego co 1s?
+
+Oryginalny firmware Mega oczekuje pakietów GPS co ~1s (standard NMEA).
+Dzięki temu sekundy na tubach są idealnie płynne – zegar traktuje to jak prawdziwy GPS.
+Nie ma skoków ani zatrzymań sekund.
+
+NTP resync (odświeżenie czasu z serwera) dzieje się co 1 godzinę:
+C++if (millis() - lastNTPSync > 3600000) {  // 3600000 ms = 1 godzina
+  // resync NTP
+}
+To wystarcza – NTP jest bardzo dokładny, a drift RTC minimalny.
+
 ### Pliki w repo
 - Emulator GPS dla ESP32-C3
 
