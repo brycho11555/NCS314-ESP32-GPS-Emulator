@@ -21,7 +21,7 @@ W schemacie zegara gniazdo GPS jest **błędnie oznaczone** – zamienione są w
 
 ESP32-C3          →          Arduino Mega
 
-TX (GPIO4)        →          RX1 (pin 19)
+TX (GPIO4)        →          RX1 (pin 19) ŚRODKOWY PIN JACK KANAŁ AUDIO PRAWY
 
 GND               →          GND
 
