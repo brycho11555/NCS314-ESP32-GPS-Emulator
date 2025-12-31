@@ -47,9 +47,11 @@ Dzięki temu sekundy na tubach są idealnie płynne – zegar traktuje to jak pr
 Nie ma skoków ani zatrzymań sekund.
 
 NTP resync (odświeżenie czasu z serwera) dzieje się co 1 godzinę:
+
 C++if (millis() - lastNTPSync > 3600000) {  // 3600000 ms = 1 godzina
   // resync NTP
 }
+
 To wystarcza – NTP jest bardzo dokładny, a drift RTC minimalny.
 
 ### Pliki w repo
