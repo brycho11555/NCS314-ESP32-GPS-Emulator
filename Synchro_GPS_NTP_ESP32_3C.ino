@@ -115,9 +115,10 @@ void setup() {
   
   delay(500);
   
-  Serial.println("ESP32-C3 GPS Time Server dla NCS314");
-  Serial.println("Strefa: Polska (CET/CEST) - auto lato/zima");
-  
+  Serial.println("\n╔═══════════════════════════════════════════════════════╗");
+  Serial.println("║  ESP32-C3 GPS Time Server dla NCS314                 ║");
+  Serial.println("║  Strefa: Polska (CET/CEST) - auto lato/zima          ║");
+  Serial.println("╚═══════════════════════════════════════════════════════╝\n");
 
   // ────────────────────────────────────────────────────────────
   // POŁĄCZENIE WiFi
