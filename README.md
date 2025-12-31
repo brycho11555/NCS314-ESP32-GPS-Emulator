@@ -3,8 +3,6 @@
 **Pełna emulacja GPS NMEA dla oryginalnego firmware GRA & AFCH NCS314 v1.98**  
 **Bez żadnej modyfikacji kodu na Arduino Mega!**  
 
-![Nixie Clock](https://via.placeholder.com/800x400?text=Nixie+Clock+NCS314+-+przykład)  
-*(Wkrótce dodam prawdziwe zdjęcia – jak masz, wrzuć!)*
 
 ### Dlaczego to rozwiązanie jest najlepsze? 🚀
 - Mega myśli, że ma podłączony **prawdziwy GPS** (pełne pakiety `$GPRMC`, `$GPGGA`, `$GPGSA` z checksum).
