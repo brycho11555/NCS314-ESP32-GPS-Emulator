@@ -20,9 +20,13 @@ W schemacie zegara gniazdo GPS jest **błędnie oznaczone** – zamienione są w
 (Nic się nie stanie jak źle przylutujesz – po prostu ESP nie będzie działał).
 
 ESP32-C3          →          Arduino Mega
+
 TX (GPIO4)        →          RX1 (pin 19)
+
 GND               →          GND
+
 +5V               →          +5V
+
 
 
 ### Ustawienia w menu zegara ⏰
