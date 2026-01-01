@@ -5,10 +5,10 @@
 // ════════════════════════════════════════════════════════════════
 //  KONFIGURACJA WiFi
 // ════════════════════════════════════════════════════════════════
-const char* ssid1     = "Twoja_sieć_1";
-const char* password1 = "Twoje_hasło_do_sieci_1";
-const char* ssid2     = "Twoja_sieć_2";
-const char* password2 = "Twoje_hasło_do sieci_2";
+const char* ssid1     = "Cyfrowy";
+const char* password1 = "Ceramika_S.A.";
+const char* ssid2     = "No_Signal";
+const char* password2 = "M@rcin788799";
 
 // ════════════════════════════════════════════════════════════════
 //  STREFA CZASOWA - POLSKA (automatyczne lato/zima)
@@ -113,12 +113,12 @@ void setup() {
   Serial.begin(115200);
   GPSSerial.begin(GPS_BAUD, SERIAL_8N1, -1, GPS_TX_PIN);
   
-  delay(500);
+  delay(2000);
   
-  Serial.println("\n╔═══════════════════════════════════════════════════════╗");
-  Serial.println("║  ESP32-C3 GPS Time Server dla NCS314                 ║");
-  Serial.println("║  Strefa: Polska (CET/CEST) - auto lato/zima          ║");
-  Serial.println("╚═══════════════════════════════════════════════════════╝\n");
+Serial.println("\n╔═══════════════════════════════════════════════════════╗");
+Serial.println("║            ESP32-C3 GPS Time Server dla NCS314        ║");
+Serial.println("║        Strefa: Polska (CET/CEST) - auto lato/zima     ║");
+Serial.println("╚═══════════════════════════════════════════════════════╝\n");
 
   // ────────────────────────────────────────────────────────────
   // POŁĄCZENIE WiFi
@@ -217,11 +217,17 @@ void loop() {
   // ────────────────────────────────────────────────────────────
   // RESYNC NTP (co 1 godzinę)
   // ────────────────────────────────────────────────────────────
-  if (millis() - lastNTPSync > 3600000) {
-    lastNTPSync = millis();
-    Serial.println("🔄 NTP resync...");
-    configTime(0, 0, "pl.pool.ntp.org");
-  }
+ if (millis() - lastNTPSync > 3600000) {
+     lastNTPSync = millis();
+     Serial.println("🔄 NTP resync...");
+      configTime(0, 0, 
+               "pl.pool.ntp.org",
+               "europe.pool.ntp.org", 
+               "pool.ntp.org");
+     setenv("TZ", timezone, 1);  // ← POPRAWKA: Przywróć strefę czasową!
+     tzset();
+     Serial.println("✓ Resync OK");
+   }
 
   // ────────────────────────────────────────────────────────────
   // WYSYŁANIE PAKIETÓW GPS (co 1 sekundę)
@@ -236,20 +242,20 @@ void loop() {
     }
     
     // Walidacja czasu (nie wysyłaj jeśli czas nieprawidłowy)
-    if (timeinfo.tm_year < 124) {  // 2024
+    if (timeinfo.tm_year < 125) {  // 2025
       Serial.println("⚠ Czas < 2024 - czekam na NTP");
       return;
     }
     
     // Generuj i wyślij pakiety NMEA
     String rmc = generateGPRMC(timeinfo);
-    String gga = generateGPGGA(timeinfo);
-    String gsa = generateGPGSA();
+   // String gga = generateGPGGA(timeinfo);
+   // String gsa = generateGPGSA();
     
     // Wyślij do Arduino przez UART
     GPSSerial.print(rmc);
-    GPSSerial.print(gga);
-    GPSSerial.print(gsa);
+   // GPSSerial.print(gga);
+   // GPSSerial.print(gsa);
     
     // ────────────────────────────────────────────────────────
     // DIAGNOSTYKA (co 10 pakietów)
