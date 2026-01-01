@@ -5,10 +5,10 @@
 // ════════════════════════════════════════════════════════════════
 //  KONFIGURACJA WiFi
 // ════════════════════════════════════════════════════════════════
-const char* ssid1     = "Cyfrowy";
-const char* password1 = "Ceramika_S.A.";
-const char* ssid2     = "No_Signal";
-const char* password2 = "M@rcin788799";
+const char* ssid1     = "Twoja_siec_1";
+const char* password1 = "Haslo_sieci_1";
+const char* ssid2     = "Twoja_siec_2";
+const char* password2 = "Haslo_sieci_2";
 
 // ════════════════════════════════════════════════════════════════
 //  STREFA CZASOWA - POLSKA (automatyczne lato/zima)
